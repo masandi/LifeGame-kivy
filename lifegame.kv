@@ -1,0 +1,61 @@
+
+#:kivy 1.8
+
+
+<DefaultButton@ActionButton>:
+    replace_text: ""
+    text: "[i][b]{replace_text}[/b][i]".format(replace_text=self.replace_text)
+    background_normal: "atlas://data/images/defaulttheme/button_disabled"
+    markup: True
+
+<Cell>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    on_touch_down: if self.collide_point(*args[1].pos): self.status^=1
+
+<CellGrid>:
+    canvas.before:
+        Color:
+            rgba: .5, .5, .5, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    cols: 70
+    rows: 50
+    spacing: 1, 1
+    padding: 5, 5, 5, 5
+
+<LifeGame>:
+    orientation: 'vertical'
+    cellgrid: cellgrid
+
+    ActionBar:
+        height: 100
+        pos_hint: {'top':1}
+        ActionView:
+            use_separator: True
+            ActionPrevious:
+                title: "Conway's Life Game"
+                with_previous: False
+            ActionButton:
+                text: "Steps : {steps}".format(steps=cellgrid.steps)
+            DefaultButton:
+                replace_text: "Start"
+                on_press: root.start(app.config.getfloat('global', 'interval'))
+            DefaultButton:
+                replace_text: "Pause"
+                on_press: root.pause()
+            DefaultButton:
+                replace_text: "Reset"
+                on_press: root.reset()
+            DefaultButton:
+                replace_text: "Configuration"
+                on_press:  (not app.open_settings()) and app.close_settings()
+    CellGrid:
+        id: cellgrid
+
+

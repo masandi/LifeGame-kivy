@@ -1,0 +1,10 @@
+[
+    { "type": "title",
+      "title": "Global Settings" },
+
+    { "type": "numeric",
+      "title": "Interval",
+      "desc": "game speed",
+      "section": "global",
+      "key": "interval" }
+]
