@@ -69,9 +69,8 @@ class CellGrid(GridLayout):
         #Transform 2d grid
         grid = [list(reversed(self.children[self.cols*i:self.cols*(i+1)]))
                 for i in reversed(range(self.rows))]
-        for y in range(self.rows):
-            for x in range(self.cols):
-                grid[y][x].set_neighborhood((x, y), grid)
+        for y, x in itertools.product(range(self.rows), range(self.cols)):
+            grid[y][x].set_neighborhood((x, y), grid)
 
 
 class LifeGame(BoxLayout):
