@@ -105,11 +105,15 @@ class LifeGameApp(App):
         return lifegame
 
 
-if __name__ == '__main__':
+def run():
     #Fixed window
     Config.set('graphics', 'width', 1024)
     Config.set('graphics', 'height', 768)
     Config.set('graphics', 'resizable', 0)
 
     LifeGameApp().run()
+
+
+if __name__ == '__main__':
+    run()
 
