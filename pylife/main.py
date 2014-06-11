@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import itertools
+import os
 
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
@@ -95,9 +96,10 @@ class LifeGameApp(App):
         config.read(self.get_application_config())
 
     def build_settings(self, settings):
+        base = os.path.dirname(os.path.abspath(__file__))
         settings.add_json_panel(
                 "Conway's Life Game", self.config,
-                filename="./lifegame_panel.json")
+                filename=os.path.join(base, "lifegame_panel.json"))
 
     def build(self):
         lifegame = LifeGame()
