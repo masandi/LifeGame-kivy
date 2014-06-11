@@ -3,7 +3,7 @@ Conway's Game of Life with kivy
 
 
 ##Usage
-    $python main.py
+    $python pylife/main.py
 
 
 ##Requirements
