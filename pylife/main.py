@@ -20,7 +20,7 @@ class Cell(Widget):
             ['die', 'die', 'live', 'live', 'die', 'die', 'die', 'die', 'die']]
 
     def __init__(self, **kwargs):
-        super(Cell, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.neighborhood = []
         self.next_status = 0
 
@@ -47,7 +47,7 @@ class Cell(Widget):
         for x_offset, y_offset in itertools.product(range(-1, 2), repeat=2):
             try:
                 self.neighborhood.append(
-                        grid[grid_pos[1] + y_offset][grid_pos[0] + x_offset])
+                    grid[grid_pos[1] + y_offset][grid_pos[0] + x_offset])
             except IndexError: continue
         self.neighborhood.remove(self)
 
@@ -66,8 +66,8 @@ class CellGrid(GridLayout):
 
     def build(self):
         for i in range(self.rows * self.cols): self.add_widget(Cell())
-        #Transform 2d grid
-        grid = [list(reversed(self.children[self.cols*i:self.cols*(i+1)]))
+        # Transform 2d grid
+        grid = [list(reversed(self.children[self.cols * i:self.cols * (i + 1)]))
                 for i in reversed(range(self.rows))]
         for y, x in itertools.product(range(self.rows), range(self.cols)):
             grid[y][x].set_neighborhood((x, y), grid)
@@ -97,8 +97,8 @@ class LifeGameApp(App):
     def build_settings(self, settings):
         base = os.path.dirname(os.path.abspath(__file__))
         settings.add_json_panel(
-                "Conway's Life Game", self.config,
-                filename=os.path.join(base, "lifegame_panel.json"))
+            "Conway's Life Game", self.config,
+            filename=os.path.join(base, "lifegame_panel.json"))
 
     def build(self):
         lifegame = LifeGame()
@@ -107,7 +107,7 @@ class LifeGameApp(App):
 
 
 def run():
-    #Fixed window
+    # Fixed window
     Config.set('graphics', 'width', 1024)
     Config.set('graphics', 'height', 768)
     Config.set('graphics', 'resizable', 0)
@@ -117,4 +117,3 @@ def run():
 
 if __name__ == '__main__':
     run()
-
