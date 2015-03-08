@@ -16,7 +16,7 @@ setup(
         package_data={'pylife': ['lifegame*.*']},
         classifiers=[
           'Programming Language :: Python',
-          'Programming Language :: Python :: 3',
+          'Programming Language :: Python :: 3.4',
           'Development Status :: 4 - Beta',
           'Operating System :: POSIX :: Linux',
           'Natural Language :: Japanese',
