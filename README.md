@@ -1,17 +1,17 @@
-#LifeGame-kivy
+# LifeGame-kivy
 Conway's Game of Life with kivy
 
 
-##Usage
+## Usage
     $python pylife/main.py
 
 
-##Requirements
+## Requirements
 * python3.x
 * kivy
 
 
-##Licenses
+## Licenses
 This software is released under the [MIT License][MIT], see LICENSE
 
 [MIT]: http://www.opensource.org/licenses/mit-license.php
